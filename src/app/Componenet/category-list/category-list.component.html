@@ -1,0 +1,14 @@
+
+
+   <div>
+    Select catgory:
+    <select #catDDL [(ngModel)]="catIDInParent">
+      <option *ngFor="let cat of CatgoryList" [value]="cat.ID">{{cat.CategoryName}}</option>
+    </select>
+    </div>
+
+<!-- <div>
+    <app-product [selCatIDInChild]="catIDInParent"></app-product>
+</div> -->
+
+

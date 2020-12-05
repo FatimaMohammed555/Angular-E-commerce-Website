@@ -1,0 +1,40 @@
+
+
+<div class="AddCart">
+    <div class="container">
+<table class="table table-bordered">
+    <thead>
+      <tr class="bg-dark text-white">
+        <!-- <th>ID</th> -->        
+        <th>Name</th>
+        <th>Price</th>
+        <th>Needed Quantity </th>
+        <th>Total Price</th>
+        <th>Image</th>
+        <th>Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let prod of OrderedList; let i =index">
+        <!-- <td>{{prod.ID}}</td> -->
+        <td>{{prod.ProductName}}</td>
+        <td>{{prod.UnitPrice}}</td>
+        <td><input name="qty" [(ngModel)]="prod.NeedQuantity" type="number"  min="1" max="{{prod.QuantityPerUnit}}"></td>
+        <td>{{prod.NeedQuantity * prod.UnitPrice}}</td>
+        <td>
+            <img class="card-img-top img-thumbnail" [src]="prod.Image" alt="Card image cap">
+        </td>
+        <td><a class="btn btn-danger" (click)="removeOnePRoduct(prod.ID)" ><i class="fa fa-trash"></i></a></td>
+      </tr>
+  
+    </tbody>
+  
+  </table>
+</div>
+</div>
+<!-- <a class="sqr-btn d-block" style="color:#fff" (click)="checkOut()">Proceed To Checkout</a> -->
+
+  <button style="float:right" [routerLink]='["/Home"]' class="btn btn-success" (click)="checkout()">Procced To Checkout&nbsp;&nbsp;<i class="fa fa-check"></i></button>
+  <button type="button" class="btn btn-danger" (click)="removeProducts()"> Remove All Products&nbsp;&nbsp;<i class="fa fa-trash"></i></button>
+  
+

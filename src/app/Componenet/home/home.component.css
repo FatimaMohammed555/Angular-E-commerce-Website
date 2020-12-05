@@ -1,0 +1,10 @@
+
+.DisplayAllProd{margin-top: 10%;}
+.DisplayAllProd .search{width: 18rem;}
+.DisplayAllProd .card{margin-bottom: 3%;}
+
+.DisplayAllProd .card .card-img-top
+{
+    height: 200px;
+}
+

@@ -1,0 +1,79 @@
+
+
+<div class="DisplayAllProd">
+    <div class="container">
+      
+  <div class="search mb-4">
+    <input class="form-control" type="text" name="search" [(ngModel)]="ProductName" (input)="Search()"  placeholder="Start searching By ProductName">
+  </div>
+
+  <select class="ml-4" (change)="change(catDDL.value)" #catDDL>
+    <!-- <option>--All Category--!{{GetAllCategory()}}</option> -->
+    <option>--All Category--!</option>
+    <option *ngFor="let cat of CatgoryList" [value]="cat.ID">{{cat.CategoryName}}</option>
+  </select>
+
+ <button type="submit" (click)="GetAllCategory()">getAllCatogry</button>
+
+
+<!--Start Section: Price -->
+ <section class="mb-4" filter="price">
+  <h6 class="font-weight-bold mb-3">Price</h6>
+  <form #frm="ngForm" (ngSubmit)="SearchByPrice(min,max)">
+    <div class="d-flex align-items-center mt-4 pb-1">
+      <div class="md-form md-outline my-0">
+        <label for="from">$ Min</label>
+        <input id="from" type="number" name="searchMin" min="1000" max="11999" [(ngModel)]="min" class="form-control mb-0"  step="5">
+      </div>
+      <p class="px-2 mb-0 text-muted"> - </p>
+      <div class="md-form md-outline my-0">
+        <label for="to">$ Max</label>
+        <input id="to" type="number" name="searchMax" min="1001" max="12000" [(ngModel)]="max" class="form-control mb-0">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form> 
+</section> 
+
+
+<!-- <label> Min:{{*ngFor="let min of SearchByPrice(min) | currency" }}
+  <input type="range" 
+         min="0" 
+         max="1000"
+         numeric
+         [(ngModel)]="min" >
+</label> 
+<label>Max: {{let max of SearchByPrice(max)  |  currency }}
+  <input type="range" 
+         min="0" 
+         max="1000"
+         numeric
+         [(ngModel)]="max">    
+</label>
+ -->
+
+<!--end Section: Price -->
+
+        <div class="row">
+            <div class="col-lg-4 col-sm-12" *ngFor="let prod of prdList">
+                <div  class="card" style="width: 18rem;">
+                <img class="card-img-top img-thumbnail" [src]="prod.Image" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">{{prod.ProductName}}</h5>
+                  <div class="card-text">
+                    <div>{{prod.UnitPrice}}</div><br>
+                  </div>
+                  <div class="add-to-cart">
+                    <button class="add-to-cart-btn" (click)="pushProductToCart(prod)"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                  </div>
+                </div>
+              </div>
+
+
+          </div>
+        </div>
+      </div>
+</div>
+
+
+  <!-- (click)="goBack()" -->

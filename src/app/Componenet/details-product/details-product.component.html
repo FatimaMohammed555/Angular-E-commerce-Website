@@ -1,0 +1,18 @@
+
+
+<div  class="card" style="width: 18rem;">
+    <img class="card-img-top img-thumbnail" [src]="prd.Image" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{prd.ProductName}}</h5>
+      <div class="card-text">
+        <div><b>ID:</b> {{prd.ID}}</div><br>
+        <div><b>Price:</b> {{prd.UnitPrice}}</div><br>
+        <div><b>Quantity:</b> {{prd.QuantityPerUnit}}</div><br>
+      </div>
+      <button class="btn btn-primary" (click)="goBack()">Back to List</button>
+    </div>
+  </div>
+
+
+  
+

@@ -1,0 +1,59 @@
+
+
+<div class="AllProduct">
+
+  <div class="search">
+    <!-- <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Start searching"> -->
+    <input class="form-control" type="text" name="search" [(ngModel)]="ProductName" (input)="Search()"  placeholder="Start searching">
+
+  
+  </div><br>
+  <a class="btn btn-primary  ml-3" [routerLink]="['/NewProduct']" role="button">Add Product</a>
+    
+  <select #catDDL class="ml-4" (change)="change(catDDL.value)" >
+    <option>--Select Category--!</option>
+    <option *ngFor="let cat of CatgoryList" [value]="cat.ID">{{cat.CategoryName}}</option>
+  </select>
+
+  <h3>List of our products:</h3>
+    <table class="table table-hover table-bordered table-info">
+        <tr class="bg-dark text-white">
+          <td>ID</td>
+          <td>Name</td>
+          <td>Avalable Quantity</td>
+          <td>Price</td>
+          <td>Details</td>
+          <td>Delete</td>
+          <td>Update</td>
+          <td>ProductImage</td>
+
+        </tr>
+      <tbody>
+        <!-- prdList -->
+        <!--getProductsByCatID()-->
+        <tr *ngFor="let prod of prdList | filter:searchText; let i =index"
+        [ngStyle] = "{'background-color': (prod.Quantity === 0)? 'yellow' : 'white'}"
+        [ngClass] = "{'bg-info': (prod.Quantity === 1)}">
+          <td>{{prod.ID}}</td>
+          <td>{{prod.ProductName}}</td>
+          <td>{{prod.QuantityPerUnit}}</td>
+          <td>{{prod.UnitPrice | currency}}</td>
+
+      <td><a [routerLink]="['/Product/', prod.ID]" class="btn btn-primary">View details</a></td>
+    <td>
+      <button class="btn btn-primary" type="button" [routerLink]="['/Product/']" (click)="deleteProd(prod.ID)">Delete</button>
+    </td>
+    <td>
+      <button class="btn btn-primary" type="button" [routerLink]="['/EditProduct/', prod.ID]">Update</button>
+    </td>
+      <td>
+              <div class="prodImg">
+                <img [src]="prod.Image" alt="prodimg" class="img-thumbnail imgStyle" />
+              </div>
+      </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+
+
